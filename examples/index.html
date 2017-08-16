@@ -31,7 +31,7 @@
       margin-top: 10px;
     }
 
-    #flyflower-stage {
+    #fruits-stage {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -44,9 +44,73 @@
 </head>
 <body>
   <p class="title">click anywhere</p>
-  <canvas id="flyflower-stage" width="800" height="900"></canvas>
+  <canvas id="fruits-stage" width="800" height="900"></canvas>
   <script type="text/javascript" src="https://jasonchen1982.github.io/jcc2d/build/jcc2d.js"></script>
   <script type="text/javascript" src="../build/index.js"></script>
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    var stage = new JC.Stage({
+      dom: 'fruits-stage',
+    });
+    var fm = new JC.FruitMachine({
+      images: {
+        great: './images/great.png',
+        heart: './images/heart.png',
+        kiss: './images/kiss.png',
+        smile: './images/smile.png',
+        star: './images/star.png',
+      },
+      mask: {
+        x: 0,
+        y: 0,
+        ref: 'smile',
+      },
+      fruits: [
+        {
+          x: 0,
+          y: 0,
+          ref: 'great',
+        },
+        {
+          x: 100,
+          y: 0,
+          ref: 'heart',
+        },
+        {
+          x: 200,
+          y: 0,
+          ref: 'great',
+        },
+        {
+          x: 200,
+          y: 100,
+          ref: 'kiss',
+        },
+        {
+          x: 200,
+          y: 200,
+          ref: 'great',
+        },
+        {
+          x: 100,
+          y: 200,
+          ref: 'star',
+        },
+        {
+          x: 0,
+          y: 200,
+          ref: 'heart',
+        },
+        {
+          x: 0,
+          y: 100,
+          ref: 'star',
+        },
+      ],
+    });
+    fm.doc.x = stage.width / 2 - 125;
+    fm.doc.y = stage.height / 2 - 125;
+    stage.adds(fm.doc);
+    stage.startEngine();
+  </script>
 </body>
 </html>
